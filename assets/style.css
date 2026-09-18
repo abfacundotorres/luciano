@@ -88,12 +88,16 @@ a { color: inherit; }
   grid-template-columns: repeat(2, auto);
   column-gap: 6px;
   line-height: 1.3;
+}
+
+.logo-grid span:nth-child(1),
+.logo-grid span:nth-child(2) {
   border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
+  padding-bottom: 4px;
 }
 
 .logo-rule {
-  width: 40px;
+  width: 58px;
   height: 1px;
   background: var(--line-soft);
 }
@@ -402,12 +406,26 @@ body.is-portada {
 
 .hg-circle {
   fill: none;
-  stroke: var(--line-soft);
   stroke-width: 1;
 }
 
 .hg-circle--dashed {
+  stroke: var(--line-soft);
   stroke-dasharray: 3 5;
+}
+
+.hg-circle--solid {
+  stroke: url(#hg-fade-solid);
+}
+
+.hg-fade-stop-0 {
+  stop-color: var(--line-soft);
+  stop-opacity: 0;
+}
+
+.hg-fade-stop-1 {
+  stop-color: var(--line-soft);
+  stop-opacity: 1;
 }
 
 .hg-dot {
