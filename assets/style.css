@@ -480,12 +480,21 @@ body.is-portada {
 .hero-graphic-svg {
   display: block;
   width: 100%;
-  max-width: 240px;
+  max-width: 280px;
   height: auto;
 }
 
+.hero-graphic-svg--desktop {
+  display: none;
+}
+
 @media (min-width: 861px) {
-  .hero-graphic-svg {
+  .hero-graphic-svg--mobile {
+    display: none;
+  }
+
+  .hero-graphic-svg--desktop {
+    display: block;
     max-width: 320px;
   }
 }
@@ -507,6 +516,10 @@ body.is-portada {
 
 .hg-circle--solid {
   stroke: url(#hg-fade-solid);
+}
+
+.hero-graphic-svg--mobile .hg-circle--solid {
+  stroke: url(#hg-fade-solid-mobile);
 }
 
 .hg-fade-stop-0 {
