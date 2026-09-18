@@ -391,7 +391,7 @@ body.is-portada {
 .hero-graphic-svg {
   display: block;
   width: 100%;
-  max-width: 330px;
+  max-width: 320px;
   height: auto;
 }
 
@@ -416,8 +416,7 @@ body.is-portada {
 
 .hg-quote {
   font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
+  font-size: 19px;
   fill: var(--fg);
 }
 
