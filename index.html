@@ -10,43 +10,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
+<body class="is-portada">
 
-<header class="site-header">
-  <a href="#top" class="logo" aria-label="Luciano Torres Mc Cabe - inicio">
+<button id="theme-toggle" class="theme-toggle theme-toggle--floating" type="button" aria-label="Cambiar entre modo claro y oscuro">
+  <span class="theme-toggle-dot"></span>
+</button>
+
+<a href="inicio.html" class="portada" aria-label="Entrar al sitio de Luciano Torres Mc Cabe">
+
+  <div class="portada-mark" aria-hidden="true">
     <span class="logo-grid">
       <span>L</span><span>T</span><span>M</span><span>C</span>
     </span>
-    <span class="logo-rule"></span>
-  </a>
-
-  <nav class="main-nav" aria-label="Secciones">
-    <a href="#clinica">Clínica</a>
-    <a href="#pensamiento">Pensamiento</a>
-    <a href="#escritura">Escritura</a>
-    <a href="#agenda">Agenda</a>
-  </nav>
-
-  <div class="header-actions">
-    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar entre modo claro y oscuro">
-      <span class="theme-toggle-dot"></span>
-    </button>
-    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-</header>
 
-<nav id="mobile-nav" class="mobile-nav" aria-label="Secciones (móvil)">
-  <a href="#clinica">Clínica</a>
-  <a href="#pensamiento">Pensamiento</a>
-  <a href="#escritura">Escritura</a>
-  <a href="#agenda">Agenda</a>
-</nav>
-
-<main id="top">
-
-  <section class="hero">
+  <div class="hero">
     <div class="hero-main">
       <h1 class="hero-title">
         Luciano<br>
@@ -57,21 +35,6 @@
         Psicólogo general sanitario<br>
         especialista en psicología clínica
       </p>
-
-      <hr class="hero-rule">
-
-      <p class="hero-lead">
-        La clínica es el punto de partida.<br>
-        La experiencia humana,<br>
-        el campo de trabajo.
-      </p>
-
-      <a href="#trabajo" class="cta">
-        <span class="cta-index">01</span>
-        <span class="cta-rule"></span>
-        <span class="cta-label">Explorar<br>mi trabajo</span>
-        <span class="cta-arrow" aria-hidden="true">&#8594;</span>
-      </a>
     </div>
 
     <div class="hero-graphic" aria-hidden="true">
@@ -81,72 +44,14 @@
       <div class="hero-graphic-dot"></div>
       <p class="hero-graphic-quote">Toda realidad<br>psíquica es real.</p>
     </div>
-  </section>
-
-  <section id="trabajo" class="index-grid">
-
-    <article id="clinica" class="index-item">
-      <span class="index-number">01</span>
-      <h2>Clínica</h2>
-      <hr>
-      <p class="index-desc">
-        Psicoterapia<br>
-        online y presencial
-      </p>
-      <p class="index-placeholder">[ Contenido de la sección Clínica — a completar ]</p>
-    </article>
-
-    <article id="pensamiento" class="index-item">
-      <span class="index-number">02</span>
-      <h2>Pensamiento</h2>
-      <hr>
-      <p class="index-desc">
-        Conferencias<br>
-        docencia<br>
-        investigación
-      </p>
-      <p class="index-placeholder">[ Contenido de la sección Pensamiento — a completar ]</p>
-    </article>
-
-    <article id="escritura" class="index-item">
-      <span class="index-number">03</span>
-      <h2>Escritura</h2>
-      <hr>
-      <p class="index-desc">
-        Artículos<br>
-        ensayos<br>
-        publicaciones
-      </p>
-      <p class="index-placeholder">[ Contenido de la sección Escritura — a completar ]</p>
-    </article>
-
-    <article id="agenda" class="index-item">
-      <span class="index-number">04</span>
-      <h2>Agenda</h2>
-      <hr>
-      <p class="index-desc">
-        Próximas actividades<br>
-        y encuentros
-      </p>
-      <p class="index-placeholder">[ Contenido de la sección Agenda — a completar ]</p>
-    </article>
-
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <p class="footer-note">
-    <span class="footer-rule" aria-hidden="true"></span>
-    Realidades<br>que también habitan.
-  </p>
-
-  <div class="lang-switch" aria-label="Idioma">
-    <button type="button" class="lang-current" aria-current="true">ES</button>
-    <button type="button" disabled title="Próximamente">CA</button>
-    <button type="button" disabled title="Próximamente">EN</button>
   </div>
-</footer>
+
+  <span class="portada-enter">
+    <span class="portada-enter-arrow" aria-hidden="true">&#8595;</span>
+    <span>Entrar</span>
+  </span>
+
+</a>
 
 <script src="assets/script.js"></script>
 </body>
