@@ -11,6 +11,9 @@
 
   --tracking-label: 0.14em;
   --container-pad: clamp(24px, 5vw, 72px);
+
+  --bulb-fill: #f2c14e;
+  --bulb-glow: drop-shadow(0 0 5px rgba(242, 193, 78, 0.75));
 }
 
 :root[data-theme="dark"] {
@@ -19,6 +22,9 @@
   --fg-muted: #8f897c;
   --line: rgba(242, 237, 227, 0.4);
   --line-soft: rgba(242, 237, 227, 0.18);
+
+  --bulb-fill: none;
+  --bulb-glow: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +34,9 @@
     --fg-muted: #8f897c;
     --line: rgba(242, 237, 227, 0.4);
     --line-soft: rgba(242, 237, 227, 0.18);
+
+    --bulb-fill: none;
+    --bulb-glow: none;
   }
 }
 
@@ -123,27 +132,32 @@ a { color: inherit; }
 }
 
 .theme-toggle {
-  width: 40px;
-  height: 22px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
+  width: 32px;
+  height: 32px;
+  border: none;
   background: transparent;
   cursor: pointer;
-  padding: 2px;
+  padding: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
+  color: var(--fg);
 }
 
-.theme-toggle-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--fg);
-  transition: transform 0.25s ease;
+.bulb-icon {
+  overflow: visible;
 }
 
-:root[data-theme="dark"] .theme-toggle-dot {
-  transform: translateX(18px);
+.bulb-glass,
+.bulb-base {
+  stroke: currentColor;
+  fill: var(--bulb-fill);
+  transition: fill 0.25s ease, filter 0.25s ease;
+  filter: var(--bulb-glow);
+}
+
+.bulb-base {
+  fill: none;
 }
 
 .menu-btn {
