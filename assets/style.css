@@ -276,12 +276,19 @@ body.is-portada {
 .portada {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   min-height: 100vh;
-  padding: clamp(48px, 9vw, 110px) var(--container-pad);
+  min-height: 100dvh;
+  padding: clamp(88px, 22vw, 110px) var(--container-pad) clamp(28px, 6vw, 40px);
   text-decoration: none;
   color: var(--fg);
   position: relative;
+}
+
+@media (min-width: 861px) {
+  .portada {
+    justify-content: center;
+    padding: clamp(48px, 9vw, 110px) var(--container-pad);
+  }
 }
 
 .portada-mark {
@@ -295,6 +302,14 @@ body.is-portada {
 
 .portada .hero {
   padding: 0;
+}
+
+@media (max-width: 860px) {
+  .portada .hero {
+    flex: 1;
+    justify-content: center;
+    min-height: 0;
+  }
 }
 
 .portada-enter {
@@ -465,7 +480,7 @@ body.is-portada {
 .hero-graphic-svg {
   display: block;
   width: 100%;
-  max-width: 190px;
+  max-width: 240px;
   height: auto;
 }
 
