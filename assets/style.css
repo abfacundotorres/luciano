@@ -385,61 +385,45 @@ body.is-portada {
 
 /* ---------- Hero graphic ---------- */
 .hero-graphic {
-  position: relative;
-  min-height: 420px;
   display: none;
 }
 
-.hero-graphic-line {
-  position: absolute;
-  left: 30%;
-  top: 0;
-  bottom: 90px;
-  width: 1px;
-  background: var(--line-soft);
+.hero-graphic-svg {
+  display: block;
+  width: 100%;
+  max-width: 330px;
+  height: auto;
 }
 
-.hero-graphic-circle {
-  position: absolute;
-  left: 30%;
-  top: 45%;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+.hg-line {
+  stroke: var(--line-soft);
+  stroke-width: 1;
 }
 
-.hero-graphic-circle--solid {
-  border: 1px solid var(--line-soft);
+.hg-circle {
+  fill: none;
+  stroke: var(--line-soft);
+  stroke-width: 1;
 }
 
-.hero-graphic-circle--dashed {
-  width: 210px;
-  height: 210px;
-  border: 1px dashed var(--line-soft);
+.hg-circle--dashed {
+  stroke-dasharray: 3 5;
 }
 
-.hero-graphic-dot {
-  position: absolute;
-  left: 30%;
-  top: 45%;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--fg);
-  transform: translate(-50%, -50%);
+.hg-dot {
+  fill: var(--fg);
 }
 
-.hero-graphic-quote {
-  position: absolute;
-  left: calc(30% + 60px);
-  top: 55%;
+.hg-quote {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 18px;
-  line-height: 1.4;
-  margin: 0;
-  max-width: 20ch;
+  fill: var(--fg);
+}
+
+.hg-quote-rule {
+  stroke: var(--line-soft);
+  stroke-width: 1;
 }
 
 @media (min-width: 861px) {
