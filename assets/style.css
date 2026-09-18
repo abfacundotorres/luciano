@@ -129,6 +129,12 @@ a { color: inherit; }
   gap: 20px;
 }
 
+.header-utility {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .theme-toggle {
   width: 40px;
   height: 40px;
@@ -228,6 +234,12 @@ a { color: inherit; }
   letter-spacing: -0.01em;
 }
 
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 11vw;
+  }
+}
+
 .hero-subtitle {
   margin: 0 0 20px;
   font-size: 12px;
@@ -243,11 +255,14 @@ body.is-portada {
   margin: 0;
 }
 
-.theme-toggle--floating {
+.portada-actions {
   position: fixed;
   top: 28px;
   right: var(--container-pad);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .portada {
@@ -388,6 +403,51 @@ body.is-portada {
   transform: translateX(-4px);
 }
 
+/* ---------- Contact links ---------- */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--fg);
+  width: fit-content;
+}
+
+.contact-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.contact-arrow {
+  font-size: 16px;
+  color: var(--fg-muted);
+  transition: transform 0.2s ease;
+}
+
+.contact-value {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 22px);
+}
+
+.contact-link:hover .contact-arrow {
+  transform: translateX(6px);
+}
+
+.contact-link:hover .contact-value {
+  opacity: 0.7;
+}
+
 /* ---------- Hero graphic ---------- */
 .hero-graphic {
   display: none;
@@ -453,19 +513,21 @@ body.is-portada {
   padding: clamp(40px, 8vw, 90px) var(--container-pad) 0;
 }
 
-/* ---------- Inicio: fit in one screen, no scroll ---------- */
-body.page-inicio {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+/* ---------- Fit each page in one screen on desktop; scroll only if content needs it ---------- */
+@media (min-width: 641px) {
+  body:not(.is-portada) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-body.page-inicio main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 0;
+  body:not(.is-portada) main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+  }
 }
 
 body.page-inicio .intro {
@@ -587,7 +649,12 @@ body.page-inicio .site-footer {
 
 .lang-switch {
   display: flex;
-  gap: 14px;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
 }
 
 .lang-switch span,
