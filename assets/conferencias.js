@@ -1,6 +1,14 @@
 (function () {
-  // Pega acá la URL del CSV publicado de la Google Sheet (ver README-conferencias.md).
-  var CSV_URL = "REPLACE_WITH_YOUR_PUBLISHED_SHEET_CSV_URL";
+  // Pega acá la URL del CSV publicado de cada Google Sheet, una por idioma
+  // (ver README-conferencias.md).
+  var CSV_URLS = {
+    es: "REPLACE_WITH_YOUR_ES_SHEET_CSV_URL",
+    ca: "REPLACE_WITH_YOUR_CA_SHEET_CSV_URL",
+    en: "REPLACE_WITH_YOUR_EN_SHEET_CSV_URL"
+  };
+
+  var lang = document.documentElement.lang || "es";
+  var CSV_URL = CSV_URLS[lang] || CSV_URLS.es;
 
   function parseCSV(text) {
     var rows = [];
