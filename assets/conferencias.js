@@ -2,7 +2,7 @@
   // Pega acá la URL del CSV publicado de cada Google Sheet, una por idioma
   // (ver README-conferencias.md).
   var CSV_URLS = {
-    es: "REPLACE_WITH_YOUR_ES_SHEET_CSV_URL",
+    es: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeF9M2uvEz39rAcOn2HKq27ERDnaCk8zX2jYxC-aPo4Qz9rDG4btiuaK5xDijUDrbOAEYAzfVioF_V/pub?gid=0&single=true&output=csv",
     ca: "REPLACE_WITH_YOUR_CA_SHEET_CSV_URL",
     en: "REPLACE_WITH_YOUR_EN_SHEET_CSV_URL"
   };
