@@ -38,6 +38,19 @@
     --bulb-fill: none;
     --bulb-glow: none;
   }
+
+  /* La portada se mantiene siempre en modo claro salvo que el visitante
+     elija oscuro a mano con el toggle (ahí sí se respeta, ver arriba). */
+  html:not([data-theme]) body.is-portada {
+    --bg: #f2ede3;
+    --fg: #17140f;
+    --fg-muted: #6b6559;
+    --line: rgba(23, 20, 15, 0.35);
+    --line-soft: rgba(23, 20, 15, 0.15);
+
+    --bulb-fill: #f2c14e;
+    --bulb-glow: drop-shadow(0 0 5px rgba(242, 193, 78, 0.75));
+  }
 }
 
 * { box-sizing: border-box; }
@@ -568,6 +581,54 @@ body.is-portada {
 .hg-quote-rule {
   stroke: var(--line-soft);
   stroke-width: 1;
+}
+
+/* Animación de trazo: las líneas se dibujan al entrar, con los colores
+   del modo (claro/oscuro) que esté activo en ese momento. */
+html.js .hero-graphic-svg .hg-line,
+html.js .hero-graphic-svg .hg-circle--solid {
+  transition: stroke-dashoffset 1.1s ease;
+}
+
+html.js .hero-graphic-svg .hg-circle--dashed,
+html.js .hero-graphic-svg .hg-dot,
+html.js .hero-graphic-svg .hg-quote,
+html.js .hero-graphic-svg .hg-quote-rule {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+html.js .hero-graphic-svg.hg-ready .hg-circle--dashed {
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+html.js .hero-graphic-svg.hg-ready .hg-dot {
+  opacity: 1;
+  transition-delay: 0.95s;
+}
+
+html.js .hero-graphic-svg.hg-ready .hg-quote {
+  opacity: 1;
+  transition-delay: 1.05s;
+}
+
+html.js .hero-graphic-svg.hg-ready .hg-quote-rule {
+  opacity: 1;
+  transition-delay: 1.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .hero-graphic-svg .hg-line,
+  html.js .hero-graphic-svg .hg-circle--solid,
+  html.js .hero-graphic-svg .hg-circle--dashed,
+  html.js .hero-graphic-svg .hg-dot,
+  html.js .hero-graphic-svg .hg-quote,
+  html.js .hero-graphic-svg .hg-quote-rule {
+    transition: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
 }
 
 /* ---------- Intro ---------- */
