@@ -42,16 +42,24 @@
   if (svg) {
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var drawEls = [].slice.call(svg.querySelectorAll(".hg-line, .hg-circle--solid"));
+    var canMeasure = true;
 
-    if (reduceMotion) {
-      svg.classList.add("hg-ready");
-    } else {
+    try {
+      if (reduceMotion) {
+        throw 0; // salta al bloque que solo marca hg-ready, sin medir nada
+      }
       drawEls.forEach(function (el) {
         var length = el.getTotalLength();
         el.style.strokeDasharray = length;
         el.style.strokeDashoffset = length;
       });
+    } catch (e) {
+      canMeasure = false;
+    }
 
+    if (!canMeasure || reduceMotion) {
+      svg.classList.add("hg-ready");
+    } else {
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
           drawEls.forEach(function (el) {
