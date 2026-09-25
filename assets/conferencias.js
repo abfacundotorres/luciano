@@ -3,8 +3,8 @@
   // (ver README-conferencias.md).
   var CSV_URLS = {
     es: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeF9M2uvEz39rAcOn2HKq27ERDnaCk8zX2jYxC-aPo4Qz9rDG4btiuaK5xDijUDrbOAEYAzfVioF_V/pub?gid=0&single=true&output=csv",
-    ca: "REPLACE_WITH_YOUR_CA_SHEET_CSV_URL",
-    en: "REPLACE_WITH_YOUR_EN_SHEET_CSV_URL"
+    ca: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTYa8xO7OaCv7OjFyEtWlutKwIxdCZ02VbJldtWN9dg70linx53zHVHPPBDulCP587ZjSH8IzLmkjYP/pub?output=csv",
+    en: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTn1TMjqmrI5M3i9tujc4x583MkEHKiBL658JQNkarMVrbiib1Wxt4Juf7gC7S18HyZ3eo8UuMcHTHR/pub?output=csv"
   };
 
   var lang = document.documentElement.lang || "es";
