@@ -534,6 +534,11 @@ body.is-portada {
   aspect-ratio: 9 / 16;
   object-fit: contain;
   background: transparent;
+  /* Difumina el borde del recuadro del video hacia el fondo de la
+     página: por más que el color se corrija, un video comprimido
+     nunca va a igualar un color plano al pixel, así que se evita el
+     corte duro en vez de perseguir un match exacto. */
+  box-shadow: inset 0 0 26px 6px var(--bg);
 }
 
 @media (min-width: 861px) {
@@ -563,9 +568,10 @@ body.is-portada {
 
 /* Placa de fondo lisa detrás de la cita: tapa el texto tenue que
    trae grabado el video en ese punto y el tramo del círculo que pasa
-   por ahí, para que el texto real se lea limpio. Visible todo el
-   tiempo (no solo al revelarse la cita), porque el video ya muestra
-   ese texto grabado antes de que termine de reproducirse. */
+   por ahí, para que el texto real se lea limpio. Aparece recién
+   cuando el video está por mostrar ese texto grabado (via JS), no
+   desde el arranque, para no verse como un recuadro vacío pegado
+   sobre el dibujo mientras todavía se está dibujando. */
 .hg-quote-backdrop {
   position: absolute;
   left: 34%;
@@ -573,6 +579,15 @@ body.is-portada {
   width: 32%;
   height: 12%;
   background: var(--bg);
+}
+
+html.js .hg-quote-backdrop {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+html.js .hg-quote-overlay.mask-on .hg-quote-backdrop {
+  opacity: 1;
 }
 
 .hg-quote-overlay .hg-quote {
@@ -615,7 +630,8 @@ html.js .hg-quote-overlay.revealed .hg-quote-rule {
 
 @media (prefers-reduced-motion: reduce) {
   html.js .hg-quote-overlay .hg-quote,
-  html.js .hg-quote-overlay .hg-quote-rule {
+  html.js .hg-quote-overlay .hg-quote-rule,
+  html.js .hg-quote-backdrop {
     transition: none !important;
     opacity: 1 !important;
   }
