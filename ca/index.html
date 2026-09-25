@@ -46,7 +46,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=14">
+<link rel="stylesheet" href="../assets/style.css?v=16">
 </head>
 <body class="is-portada">
 
@@ -86,24 +86,15 @@
     </div>
 
     <div class="hero-graphic" aria-hidden="true">
-      <svg class="hero-graphic-svg" viewBox="420 105 320 580">
-        <defs>
-          <linearGradient id="hg-fade-solid" gradientUnits="userSpaceOnUse"
-            x1="529.17" y1="460.27" x2="660.89" y2="384.22">
-            <stop offset="0" class="hg-fade-stop-0" />
-            <stop offset="1" class="hg-fade-stop-1" />
-          </linearGradient>
-        </defs>
-        <line x1="558.5" y1="124" x2="558.5" y2="670" class="hg-line" />
-        <path d="M 557.98,198.93 A 123.27,123.27 0 0 1 557.98,445.47"
-          class="hg-circle hg-circle--dashed" />
-        <path d="M 479.76,375.31 A 121.48,121.48 0 1 1 578.04,545.53"
-          class="hg-circle hg-circle--solid" />
-        <circle cx="558.5" cy="427.5" r="5" class="hg-dot" />
-        <text x="589" y="528" class="hg-quote">Tota realitat</text>
-        <text x="589" y="554" class="hg-quote">psíquica és real.</text>
-        <line x1="589" y1="581" x2="612" y2="581" class="hg-quote-rule" />
-      </svg>
+      <video class="hero-graphic-video" autoplay muted playsinline preload="auto"
+        poster="../assets/video/hero-graphic-poster.jpg">
+        <source src="../assets/video/hero-graphic.mp4" type="video/mp4">
+      </video>
+      <div class="hg-quote-overlay">
+        <p class="hg-quote">Tota realitat</p>
+        <p class="hg-quote">psíquica és real.</p>
+        <span class="hg-quote-rule"></span>
+      </div>
     </div>
   </div>
 
@@ -114,6 +105,6 @@
 
 </a>
 
-<script src="../assets/script.js?v=3"></script>
+<script src="../assets/script.js?v=4"></script>
 </body>
 </html>

@@ -38,36 +38,28 @@
     });
   }
 
-  var svg = document.querySelector(".hero-graphic-svg");
-  if (svg) {
+  var heroVideo = document.querySelector(".hero-graphic-video");
+  var heroQuote = document.querySelector(".hg-quote-overlay");
+  if (heroVideo && heroQuote) {
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var drawEls = [].slice.call(svg.querySelectorAll(".hg-line, .hg-circle--solid"));
-    var canMeasure = true;
+    var revealQuote = function () {
+      heroQuote.classList.add("revealed");
+    };
 
-    try {
-      if (reduceMotion) {
-        throw 0; // salta al bloque que solo marca hg-ready, sin medir nada
-      }
-      drawEls.forEach(function (el) {
-        var length = el.getTotalLength();
-        el.style.strokeDasharray = length;
-        el.style.strokeDashoffset = length;
-      });
-    } catch (e) {
-      canMeasure = false;
-    }
-
-    if (!canMeasure || reduceMotion) {
-      svg.classList.add("hg-ready");
+    if (reduceMotion) {
+      heroVideo.removeAttribute("autoplay");
+      revealQuote();
     } else {
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          drawEls.forEach(function (el) {
-            el.style.strokeDashoffset = "0";
-          });
-          svg.classList.add("hg-ready");
-        });
-      });
+      heroVideo.addEventListener("ended", revealQuote);
+      heroVideo.addEventListener("error", revealQuote);
+      // Si el navegador bloqueó el autoplay, el video se queda en el
+      // poster (que ya es el estado final del dibujo) y mostramos la
+      // cita igual, sin esperar a un "ended" que nunca va a llegar.
+      setTimeout(function () {
+        if (heroVideo.paused) revealQuote();
+      }, 600);
+      // Red de seguridad por si algo impide que "ended" se dispare.
+      setTimeout(revealQuote, 8000);
     }
   }
 
