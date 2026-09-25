@@ -524,110 +524,86 @@ body.is-portada {
 .hero-graphic {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
-.hero-graphic-svg {
+.hero-graphic-video {
   display: block;
   width: 100%;
   max-width: 280px;
-  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  background: transparent;
 }
 
 @media (min-width: 861px) {
-  .hero-graphic-svg {
+  .hero-graphic-video {
     max-width: 320px;
   }
 }
 
-.hg-line {
-  stroke: var(--line-soft);
-  stroke-width: 1;
+/* Texto real (traducible) superpuesto sobre el video, en la misma
+   posición relativa que ocupa en el clip de referencia. */
+.hg-quote-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  max-width: 280px;
+  height: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
-.hg-circle {
-  fill: none;
-  stroke-width: 1;
+@media (min-width: 861px) {
+  .hg-quote-overlay {
+    max-width: 320px;
+  }
 }
 
-.hg-circle--dashed {
-  stroke: var(--line-soft);
-  stroke-dasharray: 3 5;
-}
-
-.hg-circle--solid {
-  stroke: url(#hg-fade-solid);
-}
-
-.hg-fade-stop-0 {
-  stop-color: var(--line-soft);
-  stop-opacity: 0;
-}
-
-.hg-fade-stop-1 {
-  stop-color: var(--line-soft);
-  stop-opacity: 1;
-}
-
-.hg-dot {
-  fill: var(--fg);
-}
-
-.hg-quote {
+.hg-quote-overlay .hg-quote {
+  position: absolute;
+  left: 37%;
+  margin: 0;
   font-family: var(--font-display);
   font-size: 19px;
-  fill: var(--fg);
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.hg-quote-overlay .hg-quote:nth-of-type(1) {
+  top: 56.5%;
+}
+
+.hg-quote-overlay .hg-quote:nth-of-type(2) {
+  top: 59.3%;
 }
 
 .hg-quote-rule {
-  stroke: var(--line-soft);
-  stroke-width: 1;
+  position: absolute;
+  left: 37%;
+  top: 63.8%;
+  width: 23px;
+  height: 0;
+  border-top: 1px solid var(--line-soft);
 }
 
-/* Animación de trazo: las líneas se dibujan al entrar, con los colores
-   del modo (claro/oscuro) que esté activo en ese momento. */
-html.js .hero-graphic-svg .hg-line,
-html.js .hero-graphic-svg .hg-circle--solid {
-  transition: stroke-dashoffset 1.1s ease;
-}
-
-html.js .hero-graphic-svg .hg-circle--dashed,
-html.js .hero-graphic-svg .hg-dot,
-html.js .hero-graphic-svg .hg-quote,
-html.js .hero-graphic-svg .hg-quote-rule {
+html.js .hg-quote-overlay .hg-quote,
+html.js .hg-quote-overlay .hg-quote-rule {
   opacity: 0;
   transition: opacity 0.7s ease;
 }
 
-html.js .hero-graphic-svg.hg-ready .hg-circle--dashed {
+html.js .hg-quote-overlay.revealed .hg-quote,
+html.js .hg-quote-overlay.revealed .hg-quote-rule {
   opacity: 1;
-  transition-delay: 0.5s;
-}
-
-html.js .hero-graphic-svg.hg-ready .hg-dot {
-  opacity: 1;
-  transition-delay: 0.95s;
-}
-
-html.js .hero-graphic-svg.hg-ready .hg-quote {
-  opacity: 1;
-  transition-delay: 1.05s;
-}
-
-html.js .hero-graphic-svg.hg-ready .hg-quote-rule {
-  opacity: 1;
-  transition-delay: 1.2s;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.js .hero-graphic-svg .hg-line,
-  html.js .hero-graphic-svg .hg-circle--solid,
-  html.js .hero-graphic-svg .hg-circle--dashed,
-  html.js .hero-graphic-svg .hg-dot,
-  html.js .hero-graphic-svg .hg-quote,
-  html.js .hero-graphic-svg .hg-quote-rule {
+  html.js .hg-quote-overlay .hg-quote,
+  html.js .hg-quote-overlay .hg-quote-rule {
     transition: none !important;
     opacity: 1 !important;
-    stroke-dashoffset: 0 !important;
   }
 }
 
