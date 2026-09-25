@@ -1,0 +1,21 @@
+# Luciano Torres Mc Cabe
+
+> Psicólogo General Sanitario, especialista en Psicología Clínica. Práctica clínica, docencia, investigación y divulgación desde la Psicología Analítica (junguiana), en diálogo con la literatura, el arte y la cultura. Ejerce en España, online y presencial. Coordina el Grupo de Trabajo en Psicología Analítica y Clínica Contemporánea del Col·legi Oficial de Psicologia de Catalunya.
+
+Sitio disponible en español (raíz), catalán (/ca/) e inglés (/en/). Las páginas listadas abajo son las versiones en español; cada una tiene su par en /ca/ y /en/ con el mismo nombre de archivo.
+
+## Páginas
+
+- [Inicio](https://lucianomccabe.com/inicio.html): navegación principal del sitio.
+- [Clínica](https://lucianomccabe.com/clinica.html): psicoterapia online y presencial.
+- [Psicoterapia junguiana](https://lucianomccabe.com/clinica-metodo.html): enfoque clínico, Psicología Analítica.
+- [Pensamiento](https://lucianomccabe.com/pensamiento.html): psicología, cultura y pensamiento clínico.
+- [Cómo pienso](https://lucianomccabe.com/pensamiento-metodo.html): psicología para pensar la experiencia humana.
+- [Conferencias](https://lucianomccabe.com/conferencias.html): charlas, docencia y encuentros (contenido dinámico, actualizado por el propio profesional).
+- [Quién soy](https://lucianomccabe.com/quien-soy.html): formación y trayectoria profesional.
+- [Contacto](https://lucianomccabe.com/contacto.html): WhatsApp e Instagram para consultas profesionales.
+
+## Notas
+
+- Sitio estático, sin login ni contenido de pago.
+- La sección Conferencias se completa vía una planilla del propio profesional; puede estar vacía ("Próximamente.") si no hay charlas cargadas en el momento del rastreo.
