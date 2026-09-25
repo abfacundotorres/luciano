@@ -538,7 +538,7 @@ body.is-portada {
 
 @media (min-width: 861px) {
   .hero-graphic-video {
-    max-width: 320px;
+    max-width: 400px;
   }
 }
 
@@ -557,8 +557,22 @@ body.is-portada {
 
 @media (min-width: 861px) {
   .hg-quote-overlay {
-    max-width: 320px;
+    max-width: 400px;
   }
+}
+
+/* Placa de fondo lisa detrás de la cita: tapa el texto tenue que
+   trae grabado el video en ese punto y el tramo del círculo que pasa
+   por ahí, para que el texto real se lea limpio. Visible todo el
+   tiempo (no solo al revelarse la cita), porque el video ya muestra
+   ese texto grabado antes de que termine de reproducirse. */
+.hg-quote-backdrop {
+  position: absolute;
+  left: 34%;
+  top: 54.5%;
+  width: 32%;
+  height: 12%;
+  background: var(--bg);
 }
 
 .hg-quote-overlay .hg-quote {
