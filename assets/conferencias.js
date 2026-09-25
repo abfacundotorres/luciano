@@ -9,6 +9,11 @@
 
   var lang = document.documentElement.lang || "es";
   var CSV_URL = CSV_URLS[lang] || CSV_URLS.es;
+  var CACHE_KEY = "ltmc-conf-" + lang;
+
+  var list = document.getElementById("conf-list");
+  var lead = document.getElementById("conf-lead");
+  if (!list || !lead) return;
 
   function parseCSV(text) {
     var rows = [];
@@ -51,9 +56,7 @@
   }
 
   function renderItems(rows) {
-    var list = document.getElementById("conf-list");
-    var lead = document.getElementById("conf-lead");
-    if (!list || !rows.length) return;
+    list.innerHTML = "";
 
     rows.forEach(function (r, idx) {
       var titulo = (r[0] || "").trim();
@@ -96,27 +99,69 @@
 
     if (list.children.length) {
       list.hidden = false;
-      if (lead) lead.hidden = true;
+      lead.hidden = true;
+      return true;
+    }
+    return false;
+  }
+
+  function cleanRows(rawText) {
+    var rows = parseCSV(rawText.trim());
+    rows.shift(); // saca la fila de encabezados (Título, Fecha, Texto)
+    return rows.filter(function (r) {
+      return r.some(function (cell) {
+        return cell.trim();
+      });
+    });
+  }
+
+  function readCache() {
+    try {
+      var raw = localStorage.getItem(CACHE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
     }
   }
 
-  if (!CSV_URL || CSV_URL.indexOf("REPLACE_WITH") === 0) return;
+  function writeCache(rows) {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(rows));
+    } catch (e) {}
+  }
 
+  // 1. Si hay una copia guardada de una visita anterior, se muestra al
+  // instante (sin esperar la red) para que nunca se vea "Próximamente"
+  // de forma innecesaria.
+  var cached = readCache();
+  var shownFromCache = cached && cached.length ? renderItems(cached) : false;
+
+  if (!CSV_URL || CSV_URL.indexOf("REPLACE_WITH") === 0) {
+    if (!shownFromCache) lead.hidden = false;
+    return;
+  }
+
+  // 2. En paralelo (o si no había nada guardado), se busca la versión
+  // actual de la planilla y se actualiza si cambió algo.
   fetch(CSV_URL, { cache: "no-store" })
     .then(function (res) {
       return res.ok ? res.text() : Promise.reject(new Error("bad response"));
     })
     .then(function (text) {
-      var rows = parseCSV(text.trim());
-      rows.shift(); // saca la fila de encabezados (Título, Fecha, Texto)
-      rows = rows.filter(function (r) {
-        return r.some(function (cell) {
-          return cell.trim();
-        });
-      });
-      renderItems(rows);
+      var rows = cleanRows(text);
+      if (rows.length) {
+        if (JSON.stringify(rows) !== JSON.stringify(cached)) {
+          renderItems(rows);
+        }
+        writeCache(rows);
+      } else if (!shownFromCache) {
+        lead.hidden = false;
+      }
     })
     .catch(function () {
-      // Sin conexión, sheet vacía o URL sin configurar: se mantiene el "Próximamente." de respaldo.
+      // Sin conexión o falla: si ya se mostró algo desde la copia
+      // guardada se deja como está; si no había nada, recién ahí
+      // aparece "Próximamente.".
+      if (!shownFromCache) lead.hidden = false;
     });
 })();
