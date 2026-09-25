@@ -299,8 +299,12 @@ body.is-portada {
 
 @media (min-width: 861px) {
   .portada {
-    justify-content: center;
-    padding: clamp(48px, 9vw, 110px) var(--container-pad);
+    justify-content: space-between;
+    padding: 88px var(--container-pad) 28px;
+  }
+
+  .portada .portada-enter {
+    margin-top: 24px;
   }
 }
 
@@ -522,19 +526,29 @@ body.is-portada {
 
 /* ---------- Hero graphic ---------- */
 .hero-graphic {
+  --hg-w: 400px;
   display: flex;
   justify-content: center;
   position: relative;
 }
 
+/* En desktop el ancho también se limita por el alto de la ventana,
+   para que portada + "Entrar" entren sin scroll en pantallas bajas. */
+@media (min-width: 861px) {
+  .hero-graphic {
+    --hg-w: min(460px, max(300px, calc((100vh - 180px) * 280 / 381)));
+    --hg-w: min(460px, max(300px, calc((100dvh - 180px) * 280 / 381)));
+  }
+}
+
 /* El video tiene fondo blanco puro: con multiply, blanco × fondo de la
    página = exactamente el fondo, sin depender de cómo decodifique el
-   color cada navegador. Está recortado al área del dibujo (560×820). */
+   color cada navegador. Está recortado al área del dibujo (560×762). */
 .hero-graphic-video {
   display: block;
   width: 100%;
-  max-width: 400px;
-  aspect-ratio: 28 / 41;
+  max-width: var(--hg-w);
+  aspect-ratio: 280 / 381;
   object-fit: contain;
   background: transparent;
   mix-blend-mode: multiply;
@@ -545,12 +559,6 @@ body.is-portada {
   mix-blend-mode: screen;
 }
 
-@media (min-width: 861px) {
-  .hero-graphic-video {
-    max-width: 460px;
-  }
-}
-
 /* Texto real (traducible) superpuesto sobre el video, en la misma
    posición relativa que ocupa en el clip de referencia. Escala con el
    ancho del gráfico (unidades cqw). */
@@ -559,17 +567,11 @@ body.is-portada {
   top: 0;
   left: 50%;
   width: 100%;
-  max-width: 400px;
+  max-width: var(--hg-w);
   height: 100%;
   transform: translateX(-50%);
   pointer-events: none;
   container-type: inline-size;
-}
-
-@media (min-width: 861px) {
-  .hg-quote-overlay {
-    max-width: 460px;
-  }
 }
 
 /* Placa de fondo lisa detrás de la cita: tapa el texto tenue que
@@ -579,9 +581,9 @@ body.is-portada {
 .hg-quote-backdrop {
   position: absolute;
   left: 40.1%;
-  top: 64.3%;
+  top: 66%;
   width: 41.1%;
-  height: 18.7%;
+  height: 20.2%;
   background: var(--bg);
 }
 
@@ -606,11 +608,11 @@ html.js .hg-quote-overlay.mask-on .hg-quote-backdrop {
 }
 
 .hg-quote-overlay .hg-quote:nth-of-type(1) {
-  top: 67.5%;
+  top: 69.3%;
 }
 
 .hg-quote-overlay .hg-quote:nth-of-type(2) {
-  top: 71.8%;
+  top: 74%;
 }
 
 html.js .hg-quote-overlay .hg-quote {
