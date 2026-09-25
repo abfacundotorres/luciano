@@ -529,12 +529,12 @@ body.is-portada {
 
 /* El video tiene fondo blanco puro: con multiply, blanco × fondo de la
    página = exactamente el fondo, sin depender de cómo decodifique el
-   color cada navegador. */
+   color cada navegador. Está recortado al área del dibujo (560×820). */
 .hero-graphic-video {
   display: block;
   width: 100%;
-  max-width: 280px;
-  aspect-ratio: 9 / 16;
+  max-width: 400px;
+  aspect-ratio: 28 / 41;
   object-fit: contain;
   background: transparent;
   mix-blend-mode: multiply;
@@ -547,41 +547,41 @@ body.is-portada {
 
 @media (min-width: 861px) {
   .hero-graphic-video {
-    max-width: 400px;
+    max-width: 460px;
   }
 }
 
 /* Texto real (traducible) superpuesto sobre el video, en la misma
-   posición relativa que ocupa en el clip de referencia. */
+   posición relativa que ocupa en el clip de referencia. Escala con el
+   ancho del gráfico (unidades cqw). */
 .hg-quote-overlay {
   position: absolute;
   top: 0;
   left: 50%;
   width: 100%;
-  max-width: 280px;
+  max-width: 400px;
   height: 100%;
   transform: translateX(-50%);
   pointer-events: none;
+  container-type: inline-size;
 }
 
 @media (min-width: 861px) {
   .hg-quote-overlay {
-    max-width: 400px;
+    max-width: 460px;
   }
 }
 
 /* Placa de fondo lisa detrás de la cita: tapa el texto tenue que
    trae grabado el video en ese punto y el tramo del círculo que pasa
-   por ahí, para que el texto real se lea limpio. Aparece recién
-   cuando el video está por mostrar ese texto grabado (via JS), no
-   desde el arranque, para no verse como un recuadro vacío pegado
-   sobre el dibujo mientras todavía se está dibujando. */
+   por ahí. Aparece recién cuando el video está por mostrar ese texto
+   grabado (via JS), no desde el arranque. */
 .hg-quote-backdrop {
   position: absolute;
-  left: 34%;
-  top: 54.5%;
-  width: 32%;
-  height: 12%;
+  left: 40.1%;
+  top: 64.3%;
+  width: 41.1%;
+  height: 18.7%;
   background: var(--bg);
 }
 
@@ -596,45 +596,34 @@ html.js .hg-quote-overlay.mask-on .hg-quote-backdrop {
 
 .hg-quote-overlay .hg-quote {
   position: absolute;
-  left: 37%;
+  left: 44%;
   margin: 0;
   font-family: var(--font-display);
   font-size: 19px;
+  font-size: clamp(16px, 6.1cqw, 30px);
   color: var(--fg);
   white-space: nowrap;
 }
 
 .hg-quote-overlay .hg-quote:nth-of-type(1) {
-  top: 56.5%;
+  top: 67.5%;
 }
 
 .hg-quote-overlay .hg-quote:nth-of-type(2) {
-  top: 59.3%;
+  top: 71.8%;
 }
 
-.hg-quote-rule {
-  position: absolute;
-  left: 37%;
-  top: 63.8%;
-  width: 23px;
-  height: 0;
-  border-top: 1px solid var(--line-soft);
-}
-
-html.js .hg-quote-overlay .hg-quote,
-html.js .hg-quote-overlay .hg-quote-rule {
+html.js .hg-quote-overlay .hg-quote {
   opacity: 0;
   transition: opacity 0.7s ease;
 }
 
-html.js .hg-quote-overlay.revealed .hg-quote,
-html.js .hg-quote-overlay.revealed .hg-quote-rule {
+html.js .hg-quote-overlay.revealed .hg-quote {
   opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html.js .hg-quote-overlay .hg-quote,
-  html.js .hg-quote-overlay .hg-quote-rule,
   html.js .hg-quote-backdrop {
     transition: none !important;
     opacity: 1 !important;
