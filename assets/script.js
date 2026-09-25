@@ -42,7 +42,11 @@
   var heroQuote = document.querySelector(".hg-quote-overlay");
   if (heroVideo && heroQuote) {
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var showMask = function () {
+      heroQuote.classList.add("mask-on");
+    };
     var revealQuote = function () {
+      showMask();
       heroQuote.classList.add("revealed");
     };
 
@@ -50,6 +54,11 @@
       heroVideo.removeAttribute("autoplay");
       revealQuote();
     } else {
+      // El video trae un texto tenue grabado a partir de este punto;
+      // recién ahí hace falta tapar esa zona con la placa de fondo.
+      heroVideo.addEventListener("timeupdate", function () {
+        if (heroVideo.currentTime >= 3.2) showMask();
+      });
       heroVideo.addEventListener("ended", revealQuote);
       heroVideo.addEventListener("error", revealQuote);
       // Si el navegador bloqueó el autoplay, el video se queda en el
