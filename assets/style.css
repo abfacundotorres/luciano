@@ -527,6 +527,9 @@ body.is-portada {
   position: relative;
 }
 
+/* El video tiene fondo blanco puro: con multiply, blanco × fondo de la
+   página = exactamente el fondo, sin depender de cómo decodifique el
+   color cada navegador. */
 .hero-graphic-video {
   display: block;
   width: 100%;
@@ -534,6 +537,12 @@ body.is-portada {
   aspect-ratio: 9 / 16;
   object-fit: contain;
   background: transparent;
+  mix-blend-mode: multiply;
+}
+
+:root[data-theme="dark"] .hero-graphic-video {
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 
 @media (min-width: 861px) {
