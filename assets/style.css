@@ -534,11 +534,6 @@ body.is-portada {
   aspect-ratio: 9 / 16;
   object-fit: contain;
   background: transparent;
-  /* Difumina el borde del recuadro del video hacia el fondo de la
-     página: por más que el color se corrija, un video comprimido
-     nunca va a igualar un color plano al pixel, así que se evita el
-     corte duro en vez de perseguir un match exacto. */
-  box-shadow: inset 0 0 26px 6px var(--bg);
 }
 
 @media (min-width: 861px) {
