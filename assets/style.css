@@ -326,6 +326,11 @@ body.is-portada {
     flex: 1;
     justify-content: center;
     min-height: 0;
+    gap: 16px;
+  }
+
+  .portada .hero-subtitle {
+    margin-bottom: 0;
   }
 }
 
