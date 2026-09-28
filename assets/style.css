@@ -546,22 +546,23 @@ body.is-portada {
   }
 }
 
-/* El video tiene fondo blanco puro: con multiply, blanco × fondo de la
-   página = exactamente el fondo, sin depender de cómo decodifique el
-   color cada navegador. Está recortado al área del dibujo (560×762). */
-.hero-graphic-video {
+/* Imagen animada (APNG) con fondo transparente real: el fondo que se ve
+   es el de la página, sin blend modes ni autoplay de video, que Safari
+   no respeta de forma confiable. Recortada al área del dibujo (560×762). */
+.hero-graphic picture {
   display: block;
   width: 100%;
   max-width: var(--hg-w);
-  aspect-ratio: 280 / 381;
-  object-fit: contain;
-  background: transparent;
-  mix-blend-mode: multiply;
 }
 
-:root[data-theme="dark"] .hero-graphic-video {
+.hero-graphic-anim {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+:root[data-theme="dark"] .hero-graphic-anim {
   filter: invert(1);
-  mix-blend-mode: screen;
 }
 
 /* Texto real (traducible) superpuesto sobre el video, en la misma
@@ -577,28 +578,6 @@ body.is-portada {
   transform: translateX(-50%);
   pointer-events: none;
   container-type: inline-size;
-}
-
-/* Placa de fondo lisa detrás de la cita: tapa el texto tenue que
-   trae grabado el video en ese punto y el tramo del círculo que pasa
-   por ahí. Aparece recién cuando el video está por mostrar ese texto
-   grabado (via JS), no desde el arranque. */
-.hg-quote-backdrop {
-  position: absolute;
-  left: 40.1%;
-  top: 66%;
-  width: 41.1%;
-  height: 20.2%;
-  background: var(--bg);
-}
-
-html.js .hg-quote-backdrop {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-html.js .hg-quote-overlay.mask-on .hg-quote-backdrop {
-  opacity: 1;
 }
 
 .hg-quote-overlay .hg-quote {
@@ -630,8 +609,7 @@ html.js .hg-quote-overlay.revealed .hg-quote {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.js .hg-quote-overlay .hg-quote,
-  html.js .hg-quote-backdrop {
+  html.js .hg-quote-overlay .hg-quote {
     transition: none !important;
     opacity: 1 !important;
   }
