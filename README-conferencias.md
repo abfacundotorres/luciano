@@ -20,9 +20,10 @@ solo archivo con tres pestañas: ES, CA, EN.
    traducida al idioma de esa pestaña. Podés dejar "Fecha" vacía si no
    aplica. Para un salto de línea dentro de "Texto", usá Alt+Enter
    (Windows) u Option+Enter (Mac) dentro de la celda.
-5. El orden de las filas es el orden en que aparecen en la página (de
-   arriba hacia abajo). Las tres pestañas no necesitan tener la misma
-   cantidad de filas.
+5. Las filas nuevas siempre van al final de la planilla (debajo de las
+   últimas). En la página se muestran al revés, así que la última fila
+   que agregaste aparece primero arriba. Las tres pestañas no
+   necesitan tener la misma cantidad de filas.
 
 ## 2. Publicar cada pestaña como CSV
 
