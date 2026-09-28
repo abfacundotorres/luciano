@@ -108,11 +108,14 @@
   function cleanRows(rawText) {
     var rows = parseCSV(rawText.trim());
     rows.shift(); // saca la fila de encabezados (Título, Fecha, Texto)
-    return rows.filter(function (r) {
+    rows = rows.filter(function (r) {
       return r.some(function (cell) {
         return cell.trim();
       });
     });
+    // Se agregan filas nuevas al final de la planilla; se muestran al
+    // revés para que lo más nuevo quede arriba.
+    return rows.reverse();
   }
 
   function readCache() {
