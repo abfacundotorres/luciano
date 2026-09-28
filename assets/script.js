@@ -38,37 +38,32 @@
     });
   }
 
-  var heroVideo = document.querySelector(".hero-graphic-video");
+  var heroAnim = document.querySelector(".hero-graphic-anim");
   var heroQuote = document.querySelector(".hg-quote-overlay");
-  if (heroVideo && heroQuote) {
-    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var showMask = function () {
-      heroQuote.classList.add("mask-on");
-    };
+  if (heroAnim && heroQuote) {
+    var ANIM_MS = 5400;
+    var revealed = false;
     var revealQuote = function () {
-      showMask();
+      if (revealed) return;
+      revealed = true;
       heroQuote.classList.add("revealed");
     };
 
-    if (reduceMotion) {
-      heroVideo.removeAttribute("autoplay");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       revealQuote();
     } else {
-      // El video trae un texto tenue grabado a partir de este punto;
-      // recién ahí hace falta tapar esa zona con la placa de fondo.
-      heroVideo.addEventListener("timeupdate", function () {
-        if (heroVideo.currentTime >= 3.2) showMask();
-      });
-      heroVideo.addEventListener("ended", revealQuote);
-      heroVideo.addEventListener("error", revealQuote);
-      // Si el navegador bloqueó el autoplay, el video se queda en el
-      // poster (que ya es el estado final del dibujo) y mostramos la
-      // cita igual, sin esperar a un "ended" que nunca va a llegar.
-      setTimeout(function () {
-        if (heroVideo.paused) revealQuote();
-      }, 600);
-      // Red de seguridad por si algo impide que "ended" se dispare.
-      setTimeout(revealQuote, 8000);
+      // La animación arranca cuando la imagen está cargada; la cita
+      // aparece cuando termina el dibujo.
+      var startTimer = function () {
+        setTimeout(revealQuote, ANIM_MS);
+      };
+      if (heroAnim.complete && heroAnim.naturalWidth) {
+        startTimer();
+      } else {
+        heroAnim.addEventListener("load", startTimer);
+        heroAnim.addEventListener("error", revealQuote);
+      }
+      setTimeout(revealQuote, ANIM_MS + 4000);
     }
   }
 
