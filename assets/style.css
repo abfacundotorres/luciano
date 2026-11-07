@@ -662,7 +662,7 @@ html.js .hg-quote-overlay.revealed .hg-quote {
 /* ---------- Index / sections grid ---------- */
 .index-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 32px;
   padding: 40px var(--container-pad) 100px;
   margin-top: 40px;
