@@ -2,9 +2,9 @@
   // Pega acá la URL del CSV publicado de cada pestaña de Artículos
   // (ver README-articulos.md).
   var CSV_URLS = {
-    es: "REPLACE_WITH_YOUR_ES_ARTICULOS_SHEET_CSV_URL",
-    ca: "REPLACE_WITH_YOUR_CA_ARTICULOS_SHEET_CSV_URL",
-    en: "REPLACE_WITH_YOUR_EN_ARTICULOS_SHEET_CSV_URL"
+    es: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9WOT025rXfwZrDJuT7kG7dtGIHsIiMcyw3xXw--oSz9ceLFStKsL6OM6_hZ_qjACPLs7BYlfkyzlV/pub?output=csv",
+    ca: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSmWTwtuKEkPw_QoQUZHSxOoaLd_UDhebkC1_galc1HNNFMYOXQRt3l9DP4Q7KpYgpaVPPP6Mf2uuCm/pub?output=csv",
+    en: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSniwB1FejZLGPDfADxzRvBibJYN3BkpqyEYqzbBS1SQahyVxGBxULjpDTulikIgCIa9FbRatVHb7wP/pub?output=csv"
   };
 
   var READ_MORE = {
