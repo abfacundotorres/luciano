@@ -12,10 +12,11 @@ Sitio disponible en español (raíz), catalán (/ca/) e inglés (/en/). Las pág
 - [Pensamiento](https://lucianomccabe.com/pensamiento.html): psicología, cultura y pensamiento clínico.
 - [Cómo pienso](https://lucianomccabe.com/pensamiento-metodo.html): psicología para pensar la experiencia humana.
 - [Conferencias](https://lucianomccabe.com/conferencias.html): charlas, docencia y encuentros (contenido dinámico, actualizado por el propio profesional).
+- [Artículos](https://lucianomccabe.com/articulos.html): publicaciones y reflexiones del profesional (contenido dinámico, actualizado por el propio profesional).
 - [Quién soy](https://lucianomccabe.com/quien-soy.html): formación y trayectoria profesional.
 - [Contacto](https://lucianomccabe.com/contacto.html): WhatsApp (+34 697 26 69 95), email (lucianomccabe@gmail.com) e Instagram para consultas profesionales.
 
 ## Notas
 
 - Sitio estático, sin login ni contenido de pago.
-- La sección Conferencias se completa vía una planilla del propio profesional; puede estar vacía ("Próximamente.") si no hay charlas cargadas en el momento del rastreo.
+- Las secciones Conferencias y Artículos se completan vía planillas del propio profesional; pueden estar vacías ("Próximamente.") si no hay contenido cargado en el momento del rastreo.
